@@ -8,8 +8,6 @@ jobs:
       - checkout
       - run:
           name: ':docker: Build and package image'
-          agents:
-            queue: rea-artifacts:build
 
 workflows:
   build_and_upload:
