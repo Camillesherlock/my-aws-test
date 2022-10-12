@@ -7,9 +7,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
-      - run:
           name: ':docker: Build and package image'
           agents:
             queue: rea-artifacts:build
@@ -22,6 +19,6 @@ jobs:
                 tag-latest: true
 
 workflows:
-  say-hello-workflow:
+  build_and_upload:
     jobs:
       - say-hello
