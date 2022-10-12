@@ -10,13 +10,6 @@ jobs:
           name: ':docker: Build and package image'
           agents:
             queue: rea-artifacts:build
-          plugins:
-            - ssh://git@git.realestate.com.au/buildkite-plugin/ecr-release-buildkite-plugin#v1:
-                namespace: aws-test
-                repository: aws-test
-                tags:
-                  - "aws-test-ke"
-                tag-latest: true
 
 workflows:
   build_and_upload:
