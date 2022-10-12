@@ -20,7 +20,9 @@ jobs:
           agents:
             queue: rea-artifacts:build
           plugins:
-            - ssh://git@git.realestate.com.au/buildkite-plugin/ecr-release-buildkite-plugin#v1
+            - ssh://git@git.realestate.com.au/buildkite-plugin/ecr-release-buildkite-plugin#v1:
+                namespace: proptrack
+                repository: aws-test
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
