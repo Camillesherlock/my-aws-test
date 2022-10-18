@@ -13,7 +13,7 @@ workflows:
           dockerfile: Dockerfile
           public-registry: false
           push-image: true
-          region: AWS_REGION
+          region: 'us-west-1'
           registry-id: AWS_ECR_REGISTRY_ID
           repo: aws-test
           repo-scan-on-push: true
