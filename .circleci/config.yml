@@ -19,4 +19,5 @@ workflows:
           repo-scan-on-push: true
           role-arn: 'arn:aws:iam::669382012465:role/docker-training-ReadWrite'
           skip-when-tags-exist: false
+          security-token: SECURITY_TOKEN_ENV_VAR_NAME
 
