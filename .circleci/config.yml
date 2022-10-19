@@ -4,38 +4,12 @@ jobs:
   Login-in-Aws:
     description: login in aws
     parameters:
-      profile-name:
-        description: Profile name to be configured.
-        type: string
-        default: default
-      aws-access-key-id:
-        description: |
-          Environment variable for AWS access key id of IAM user/role.
-          Defaults to AWS_ACCESS_KEY_ID
-        type: env_var_name
-        default: AWS_ACCESS_KEY_ID
-      aws-secret-access-key:
-        description: |
-          Environment variable for AWS secret key for IAM user/role.
-          Defaults to AWS_SECRET_ACCESS_KEY
-        type: env_var_name
-        default: AWS_SECRET_ACCESS_KEY
-      aws-region:
-        description: |
-          Environment variable for AWS region to operate in.
-          Defaults to AWS_DEFAULT_REGION
-        type: env_var_name
-        default: 'us-west-1'
-      assume-role:
-        description: 'Boolean flag to tell AWS CLI to assume an IAM role, defaults to false.'
-        type: boolean
-        default: true
-      role-arn:
-        description: >-
-          Environment variable for IAM role to assume before making any AWS API
-          calls.
-        type: env_var_name
-        default: AWS_ROLE_ARN
+      profile-name: myAWS
+      aws-access-key-id: AWS_ACCESS_KEY_ID
+      aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+      aws-region: 'us-west-1'
+      assume-role: true
+      role-arn: AWS_ROLE_ARN
     steps:
       - run:
           name: Configure AWS credentials
