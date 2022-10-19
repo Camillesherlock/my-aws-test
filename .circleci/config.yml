@@ -15,9 +15,7 @@ jobs:
           name: "Say hello"
           command: "echo Hello, World!"
 workflows:
-  version: 2
-  awscli:
+  say-hello-workflow:
     jobs:
-      - Login-in-Aws:
-        context: aws
+      - Login-in-Aws
 
