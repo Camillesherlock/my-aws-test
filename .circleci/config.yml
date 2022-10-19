@@ -12,19 +12,8 @@ jobs:
       role-arn: AWS_ROLE_ARN
     steps:
       - run:
-            name: Login in AWS
-            command: |
-                if [ <<parameters.assume-role>> = true ]; then
-                aws sts assume-role --role-arn <<parameters.role-arn>> --role-session-name "circleci" > /tmp/assume-role.json
-                export AWS_ACCESS_KEY_ID=$(cat /tmp/assume-role.json | jq -r '.Credentials.AccessKeyId')
-                export AWS_SECRET_ACCESS_KEY=$(cat /tmp/assume-role.json | jq -r '.Credentials.SecretAccessKey')
-                export AWS_SESSION_TOKEN=$(cat /tmp/assume-role.json | jq -r '.Credentials.SessionToken')
-                fi
-                aws configure set aws_access_key_id <<parameters.aws-access-key-id>>
-                aws configure set aws_secret_access_key <<parameters.aws-secret-access-key>>
-                aws configure set region <<parameters.aws-region>>
-                aws configure set output json
-                aws configure list
+          name: "Say hello"
+          command: "echo Hello, World!"
 workflows:
   version: 2
   awscli:
