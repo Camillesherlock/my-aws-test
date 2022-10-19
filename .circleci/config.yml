@@ -1,23 +1,22 @@
-version: '2.1'
+version: 2.1
 orbs:
-  aws-ecr: circleci/aws-ecr@8.1.3
+  awscli: appfolio/awscli@1.0.0
+jobs:
+  awscli-example:
+    executor: awscli/default
+    steps:
+      - checkout
+      - awscli/setup:
+          profile-name: my-aws
+          aws-access-key-id: ${ACCESS_KEY_ID_ENV_VAR_NAME}
+          aws-secret-access-key: ${SECRET_ACCESS_KEY_ENV_VAR_NAME}
+          aws-region: 'us-west-1'
+          assume-role: ${AWS_ASSUME_ROLE}
+          role-arn: ${AWS_ROLE_ARN}
+      - run: echo "set up successfully"
 workflows:
-  build_and_push_image:
+  version: 2
+  awscli:
     jobs:
-      - aws-ecr/build-and-push-image:
-          aws-access-key-id: ACCESS_KEY_ID_ENV_VAR_NAME
-          aws-cli-version: latest
-          aws-secret-access-key: SECRET_ACCESS_KEY_ENV_VAR_NAME
+      - awscli-example:
           context: awsContext
-          create-repo: true
-          dockerfile: Dockerfile
-          public-registry: false
-          push-image: true
-          region: 'us-west-1'
-          registry-id: AWS_ECR_REGISTRY_ID
-          repo: aws-test
-          repo-scan-on-push: true
-          role-arn: 'arn:aws:iam::669382012465:role/docker-training-ReadWrite'
-          skip-when-tags-exist: false
-          security-token: SECURITY_TOKEN_ENV_VAR_NAME
-
